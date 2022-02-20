@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		244FB8FB27C21BF2007462A4 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 244FB8FA27C21BF2007462A4 /* Algorithms */; };
 		24991D1627B9338300795471 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24991D1527B9338300795471 /* ExampleApp.swift */; };
 		24991D1827B9338300795471 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24991D1727B9338300795471 /* ContentView.swift */; };
 		24991D1A27B9338400795471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24991D1927B9338400795471 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				244FB8FB27C21BF2007462A4 /* Algorithms in Frameworks */,
 				D06E6B788E6F2B55462C9848 /* Pods_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,7 +82,6 @@
 				ACAF6415A635C68F37F2270D /* Pods-Example.debug.xcconfig */,
 				113A7D0EF9CC5F5539569EAC /* Pods-Example.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -110,6 +111,9 @@
 			dependencies = (
 			);
 			name = Example;
+			packageProductDependencies = (
+				244FB8FA27C21BF2007462A4 /* Algorithms */,
+			);
 			productName = Example;
 			productReference = 24991D1227B9338300795471 /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +142,9 @@
 				Base,
 			);
 			mainGroup = 24991D0927B9338300795471;
+			packageReferences = (
+				244FB8F927C21BF2007462A4 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = 24991D1327B9338300795471 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -353,6 +360,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soumyamahunt.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,6 +390,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soumyamahunt.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -410,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		244FB8F927C21BF2007462A4 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		244FB8FA27C21BF2007462A4 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 244FB8F927C21BF2007462A4 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 24991D0A27B9338300795471 /* Project object */;
 }

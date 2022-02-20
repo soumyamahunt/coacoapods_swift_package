@@ -10,23 +10,27 @@ target 'Example' do
 end
 
 post_install do |installer|
-  swift_package = installer.pods_project.new Xcodeproj::Project::Object::XCRemoteSwiftPackageReference.isa
+  swift_package = installer.pods_project.new Xcodeproj::Project::Object::XCRemoteSwiftPackageReference
   swift_package.repositoryURL = "https://github.com/apple/swift-algorithms.git"
   swift_package.requirement = {
     "kind" => "upToNextMajorVersion",
     "minimumVersion" => "1.0.0"
   }
 
-  swift_package_product = installer.pods_project.new Xcodeproj::Project::Object::XCSwiftPackageProductDependency.isa
+  swift_package_product = installer.pods_project.new Xcodeproj::Project::Object::XCSwiftPackageProductDependency
   swift_package_product.package = swift_package
   swift_package_product.product_name = "Algorithms"
 
-  swift_package_build_file = installer.pods_project.new Xcodeproj::Project::Object::PBXBuildFile.isa
+  swift_package_build_file = installer.pods_project.new Xcodeproj::Project::Object::PBXBuildFile
   swift_package_build_file.product_ref = swift_package_product
+  swift_package_build_file.referrers << installer.pods_project['Frameworks']
 
-  installer.pods_project.root_object.package_references.append swift_package
-  installer.pods_project.native_targets.each do |target|
-    target.frameworks_build_phase.files.append swift_package_build_file
-    target.package_product_dependencies.append swift_package_product
+  installer.pods_project.root_object.package_references << swift_package
+  installer.pods_project.native_targets
+   .select { 
+     |target| installer.generated_pod_targets.any? { |pod| pod.pod_name == target.name }
+   }.each do |target|
+    target.frameworks_build_phase.files << swift_package_build_file
+    target.package_product_dependencies << swift_package_product
   end
 end
